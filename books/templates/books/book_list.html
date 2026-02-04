@@ -15,6 +15,12 @@
                 <span class="badge bg-info text-dark">{{ book.condition }}</span>
                 <h4 class="mt-2 text-primary">${{ book.price }}</h4>
             </div>
+            <form method="GET" action="{% url 'book_list' %}" class="mb-4">
+    <div class="input-group">
+        <input type="text" name="q" class="form-control" placeholder="Search by title or author..." value="{{ request.GET.q }}">
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+    </div>
+</form>
             <div class="card-footer bg-white border-top-0">
                 <small class="text-muted">Seller: {{ book.seller.username }}</small>
             </div>
