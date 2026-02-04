@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Book
 from .forms import BookForm
 from books import models
-
+from django.contrib.auth.decorators import login_required
 def book_list(request):
     query = request.GET.get('q')
     if query:
@@ -14,7 +14,7 @@ def book_list(request):
         books = Book.objects.all().order_by('-created_at')
     
     return render(request, 'books/book_list.html', {'books': books})
-
+@login_required
 def add_book(request):
     if request.method == "POST":
         form = BookForm(request.POST, request.FILES)
