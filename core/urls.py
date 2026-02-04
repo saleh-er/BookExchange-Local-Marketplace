@@ -4,6 +4,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.py.site.urls),
+    path('admin/', admin.site.urls),
     path('', include('books.urls')), # Connects our app to the root URL
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
