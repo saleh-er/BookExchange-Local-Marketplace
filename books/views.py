@@ -26,3 +26,9 @@ def add_book(request):
     else:
         form = BookForm()
     return render(request, 'books/add_book.html', {'form': form})
+def delete_book(request, pk):
+    book = Book.objects.get(pk=pk)
+    # Security check: only the seller can delete it
+    if request.user == book.seller:
+        book.delete()
+    return redirect('book_list')
